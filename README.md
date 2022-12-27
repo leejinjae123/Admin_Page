@@ -9,7 +9,7 @@
 
 * 개발 환경
   * 운영 체제 : Window10
-  * 언어 : Java, HTML5, CSS, JSP&Servlet
+  * 언어 : Java, HTML5, CSS, JS, JSP&Servlet
   * 서버 : apache tomcat 8
   * 데이터베이스 : MySQL
   * 개발 툴 : eclipse
