@@ -20,3 +20,4 @@
       - book_t : 게시판 테이블
       - author_t : 작성자 테이블
       - user_t : 유저 정보 테이블
+      ![Untitled](https://user-images.githubusercontent.com/112610866/209622065-6f5e2a65-87b0-45a1-81eb-f8a53a7e3cbf.png)
