@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="book">
+ 	
+	<select id="login" resultType="mybatis.vo.UserVO" parameterType="Map">
+		Select * FROM user_t
+		WHERE u_id=#{u_id} AND u_pwd=#{u_pwd}
+	</select>
+	
+	<update id="fix" parameterType="java.util.Map">
+		UPDATE user_t
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="#{u_pwd} != null" >
+				u_pwd = #{u_pwd},
+			</if>
+			<if test="#{cellPhone} != null">
+				cellPhone = #{cellPhone},
+			</if>
+			<if test="#{email} != null">
+				email = #{email},
+			</if>
+		</trim>
+		WHERE u_id = #{u_id}
+	</update>
+	
+	<insert id="signup" parameterType="Map">
+		INSERT INTO user_t(u_id, u_pwd, u_name, cellPhone, email, birth_date)
+		VALUES (#{u_id}, #{u_pwd}, #{u_name}, #{cellPhone}, #{email}, #{birth_date})
+	</insert>
+	
+	<select id="chkid" resultType="int">
+		SELECT COUNT(*) FROM user_t
+		WHERE u_id = #{u_id}
+	</select>
+	
+	<insert id="edit" parameterType="Map">
+		INSERT INTO book_t(b_name, price, b_writer, status, hit, write_date, file_name, ori_name, content, pwd)
+		VALUES(#{b_name}, #{price}, #{b_writer}, 0, 0, now(), #{file_name}, #{ori_name}, #{content}, #{pwd})
+	</insert>
+	
+	<update id="change" parameterType="java.util.Map">
+	UPDATE book_t 
+	<trim prefix="SET" suffixOverrides=",">
+		<if  test="b_name != null">
+			b_name = #{b_name},
+		</if>	
+		<if  test="content != null">
+			content  = #{content},
+		</if>
+		<if test="price != null">
+			price = #{price},
+		</if>		
+		<if  test="fname != null">
+			file_name  = #{fname},
+			ori_name =#{oname},				
+		</if>			
+	</trim>
+	WHERE b_idx = #{b_idx}
+</update>
+</mapper>
+
+
+
+
+
+
